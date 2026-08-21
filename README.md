@@ -12,8 +12,8 @@
    - `BOT_TOKEN`: توکن ربات تلگرام
    - `OWNER_ID`: آیدی عددی مالک
    - `APP_URL`: آدرس HTTPS public، مثل `https://example.com`
-4. از مرورگر این آدرس را اجرا کنید: `https://example.com/install.php`
-5. وبهوک را ثبت کنید: `https://example.com/install.php?setWebhook=1`
+4. روش پیشنهادی: از مرورگر `https://example.com/setup.php` را باز کنید و توکن، مالک و وبهوک را یکجا ثبت کنید.
+5. روش دستی: `https://example.com/install.php` را اجرا کنید و سپس `https://example.com/install.php?setWebhook=1` را باز کنید.
 6. برای بررسی سلامت نصب، `https://example.com/health.php` را باز کنید.
 7. در تلگرام `/start` را بزنید؛ مالک با `/admin` وارد پنل مدیریت می‌شود.
 
@@ -52,3 +52,11 @@
 ```bash
 composer test
 ```
+
+## ساخت بسته ZIP نهایی
+
+```bash
+php scripts/build-package.php
+```
+
+برای راهنمای کامل پنل، فایل `PANEL_GUIDE.md` و برای چک‌لیست تحویل، فایل `FINAL_DELIVERY.md` را ببینید.
