@@ -12,7 +12,8 @@ final class Keyboards
         [['text'=>'🏆 چالش‌ها','callback_data'=>'admin:challenges'],['text'=>'💞 رل‌یابی','callback_data'=>'admin:matches']],
         [['text'=>'📣 ارسال همگانی','callback_data'=>'admin:broadcast'],['text'=>'📌 ارسال/پین کانال','callback_data'=>'admin:post']],
         [['text'=>'👮 مدیران و اخطار','callback_data'=>'admin:admins'],['text'=>'🔐 عضویت اجباری','callback_data'=>'admin:force']],
-        [['text'=>'📝 متن‌ها و پاسخ آماده','callback_data'=>'admin:texts'],['text'=>'💾 بکاپ/آپدیت','callback_data'=>'admin:update']],
+        [['text'=>'📝 متن‌ها و پاسخ آماده','callback_data'=>'admin:texts'],['text'=>'⚙️ تنظیمات','callback_data'=>'admin:settings']],
+        [['text'=>'🧩 دسته‌بندی‌ها','callback_data'=>'admin:categories'],['text'=>'💾 بکاپ/آپدیت','callback_data'=>'admin:update']],
     ]]; }
     public static function back(string $to = 'home'): array { return ['inline_keyboard'=>[[['text'=>'🔙 بازگشت','callback_data'=>$to]]]]; }
     public static function ticketAdmin(int $ticketId): array { return ['inline_keyboard'=>[

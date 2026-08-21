@@ -28,4 +28,4 @@ INSERT OR IGNORE INTO categories(type,title,description,sort_order,custom_text) 
 ('match','رل‌یابی','ثبت فرم پارتنریابی',30,'فرم زیر را دقیق تکمیل کنید.');
 INSERT OR IGNORE INTO challenges(id,title,body,status,template,created_at) VALUES(1,'چالش پیش‌فرض پالادیوم','اثر خود را برای بررسی مدیران ارسال کنید.','open','🏆 {title}\n\n{body}\n\nارسال توسط تیم پالادیوم',datetime('now'));
 INSERT OR IGNORE INTO settings(key,value) VALUES
-('challenge_channel',''),('match_channel',''),('admin_warning_limit','3'),('ai_free_enabled','0'),('ai_free_endpoint','');
+('challenge_channel',''),('match_channel',''),('admin_warning_limit','3'),('ai_free_enabled','0'),('ai_free_endpoint',''),('owner_id',''),('ticket_channel',''),('category_order','ticket,challenge,match');
