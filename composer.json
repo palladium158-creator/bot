@@ -1,0 +1,1 @@
+{"name":"palladium/multiservice-telegram-bot","description":"Persian Telegram bot with tickets, challenges, matchmaking, broadcasts, admin management and updater for cPanel.","type":"project","require":{"php":">=8.1","ext-pdo":"*","ext-json":"*","ext-curl":"*"},"autoload":{"psr-4":{"PalladiumBot\\":"src/"}},"scripts":{"test":"php tests/smoke.php"}}

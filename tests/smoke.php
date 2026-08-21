@@ -1,0 +1,23 @@
+<?php
+$autoload = __DIR__.'/../vendor/autoload.php';
+require is_file($autoload) ? $autoload : __DIR__.'/../src/Autoload.php';
+use PalladiumBot\{Config,Database,Telegram,Bot};
+$root = dirname(__DIR__);
+@unlink($root.'/storage/test.sqlite');
+$config = new Config($root);
+$db = new Database($root.'/storage/test.sqlite');
+$bot = new Bot($db, new Telegram(''), $config);
+$owner = 8664412818;
+$bot->handle(['message'=>['chat'=>['id'=>$owner,'type'=>'private'],'from'=>['id'=>$owner,'first_name'=>'Owner'],'text'=>'/start']]);
+assert($db->one('SELECT COUNT(*) c FROM users')['c'] == 1);
+$uid = $db->one('SELECT id FROM users WHERE tg_id=?', [$owner])['id'];
+$bot->handle(['callback_query'=>['from'=>['id'=>$owner,'first_name'=>'Owner'],'message'=>['chat'=>['id'=>$owner]],'data'=>'svc:ticket']]);
+$bot->handle(['message'=>['chat'=>['id'=>$owner,'type'=>'private'],'from'=>['id'=>$owner,'first_name'=>'Owner','username'=>'owner'],'text'=>'سلام']]);
+assert($db->one('SELECT COUNT(*) c FROM tickets')['c'] == 1);
+$bot->handle(['callback_query'=>['from'=>['id'=>$owner,'first_name'=>'Owner'],'message'=>['chat'=>['id'=>$owner]],'data'=>'admin:settings']]);
+$bot->handle(['message'=>['chat'=>['id'=>$owner,'type'=>'private'],'from'=>['id'=>$owner,'first_name'=>'Owner'],'text'=>'challenge_channel=@test']]);
+assert($db->one('SELECT value FROM settings WHERE key=?', ['challenge_channel'])['value'] === '@test');
+$bot->handle(['callback_query'=>['from'=>['id'=>$owner,'first_name'=>'Owner'],'message'=>['chat'=>['id'=>$owner]],'data'=>'admin:categories']]);
+$bot->handle(['message'=>['chat'=>['id'=>$owner,'type'=>'private'],'from'=>['id'=>$owner,'first_name'=>'Owner'],'text'=>'order=match,challenge,ticket']]);
+assert($db->one('SELECT sort_order FROM categories WHERE type=?', ['match'])['sort_order'] == 10);
+echo "Smoke test passed\n";

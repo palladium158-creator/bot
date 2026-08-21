@@ -1,0 +1,6 @@
+/vendor/
+.env
+/storage/*.sqlite
+/storage/logs/*.log
+/storage/backups/*.zip
+/storage/updates/*.zip
