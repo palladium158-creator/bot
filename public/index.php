@@ -1,5 +1,6 @@
 <?php
-require __DIR__ . '/../vendor/autoload.php';
+$autoload = __DIR__ . '/../vendor/autoload.php';
+require is_file($autoload) ? $autoload : __DIR__ . '/../src/Autoload.php';
 use PalladiumBot\{Config,Database,Telegram,Bot};
 $root = dirname(__DIR__); $config = new Config($root);
 $dbPath = $config->get('DB_PATH', '../storage/bot.sqlite');
